@@ -5,14 +5,13 @@
     <id>veracrypt</id>
     <title>VeraCrypt</title>
     <!-- version: 1.0.[number-of-letter].1, ex: 1.0f-1 is 1.0.6.1 -->
-    <version>1.0.6.1</version>
+    <version>1.0.6.2</version>
     <authors>IDRIX</authors>
     <owners>kendaleiv</owners>
     <summary>VeraCrypt</summary>
     <description>VeraCrypt is a free disk encryption software brought to you by IDRIX (https://www.idrix.fr) and that is based on TrueCrypt.
 
-- This package installs version 1.0f-1.
-- Silent installation is not supported by VeraCrypt, see https://veracrypt.codeplex.com/discussions/579539.</description>
+- This package installs version 1.0f-2.</description>
     <projectUrl>https://veracrypt.codeplex.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/kendaleiv/chocolatey-veracrypt/master/veraCrypt.png</iconUrl>
     <tags>veracrypt admin encrypt</tags>

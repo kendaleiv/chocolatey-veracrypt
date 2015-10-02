@@ -16,6 +16,7 @@
     <iconUrl>https://cdn.rawgit.com/kendaleiv/chocolatey-veracrypt/master/veraCrypt.png</iconUrl>
     <tags>veracrypt admin encrypt</tags>
     <copyright>IDRIX</copyright>
+    <licenseUrl>https://veracrypt.codeplex.com/license</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
   </metadata>
   <files>

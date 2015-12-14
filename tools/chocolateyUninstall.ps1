@@ -15,19 +15,14 @@ else {
 $scriptPath = $(Split-Path -parent $MyInvocation.MyCommand.Definition)
 $ahkFile = Join-Path $scriptPath "veracryptUninstall.ahk"
 $ahkRun = "$Env:Temp\$(Get-Random).ahk"
-try {
-  Copy-Item $ahkFile "$ahkRun" -Force
-  $ahkProc = Start-Process -FilePath 'AutoHotKey' `
-                           -ArgumentList $ahkRun `
-                           -PassThru
-  Write-Debug "$ahkRun start time:`t$($ahkProc.StartTime.ToShortTimeString())"
-  Write-Debug "$ahkRun process ID:`t$($ahkProc.Id)"
 
-  Uninstall-ChocolateyPackage $packageName $fileType $args $setupExePath
+Copy-Item $ahkFile "$ahkRun" -Force
+$ahkProc = Start-Process -FilePath 'AutoHotKey' `
+					   -ArgumentList $ahkRun `
+					   -PassThru
+Write-Debug "$ahkRun start time:`t$($ahkProc.StartTime.ToShortTimeString())"
+Write-Debug "$ahkRun process ID:`t$($ahkProc.Id)"
 
-  Remove-Item "$ahkRun" -Force
-} catch {
-  throw $_.Exception
-}
-  
+Uninstall-ChocolateyPackage $packageName $fileType $args $setupExePath
 
+Remove-Item "$ahkRun" -Force

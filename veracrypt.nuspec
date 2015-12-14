@@ -13,7 +13,7 @@
 - Installation and uninstallation are not silent / unattended. See https://veracrypt.codeplex.com/discussions/579539</description>
     <projectUrl>https://veracrypt.codeplex.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/kendaleiv/chocolatey-veracrypt/master/veraCrypt.png</iconUrl>
-	<dependencies>
+    <dependencies>
         <dependency id="autohotkey.portable" />
     </dependencies>
     <tags>veracrypt admin encrypt</tags>

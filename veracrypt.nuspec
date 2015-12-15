@@ -8,7 +8,7 @@
     <authors>IDRIX</authors>
     <owners>kendaleiv, mew1033</owners>
     <summary>VeraCrypt</summary>
-    <description>VeraCrypt is a free disk encryption software brought to you by IDRIX (https://www.idrix.fr) and that is based on TrueCrypt.</description>
+    <description>VeraCrypt is a free disk encryption software brought to you by IDRIX (https://www.idrix.fr) and that is based on TrueCrypt 7.1a.</description>
     <projectUrl>https://veracrypt.codeplex.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/kendaleiv/chocolatey-veracrypt/master/veraCrypt.png</iconUrl>
     <dependencies>

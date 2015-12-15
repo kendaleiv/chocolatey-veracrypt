@@ -6,13 +6,16 @@
     <title>VeraCrypt</title>
     <version>1.16</version>
     <authors>IDRIX</authors>
-    <owners>kendaleiv</owners>
+    <owners>kendaleiv, mew1033</owners>
     <summary>VeraCrypt</summary>
     <description>VeraCrypt is a free disk encryption software brought to you by IDRIX (https://www.idrix.fr) and that is based on TrueCrypt.
 
 - Installation and uninstallation are not silent / unattended. See https://veracrypt.codeplex.com/discussions/579539</description>
     <projectUrl>https://veracrypt.codeplex.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/kendaleiv/chocolatey-veracrypt/master/veraCrypt.png</iconUrl>
+    <dependencies>
+        <dependency id="autohotkey.portable" />
+    </dependencies>
     <tags>veracrypt admin encrypt</tags>
     <copyright>IDRIX</copyright>
     <licenseUrl>https://veracrypt.codeplex.com/license</licenseUrl>

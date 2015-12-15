@@ -8,9 +8,7 @@
     <authors>IDRIX</authors>
     <owners>kendaleiv</owners>
     <summary>VeraCrypt</summary>
-    <description>VeraCrypt is a free disk encryption software brought to you by IDRIX (https://www.idrix.fr) and that is based on TrueCrypt.
-
-- Installation and uninstallation are not silent / unattended. See https://veracrypt.codeplex.com/discussions/579539</description>
+    <description>VeraCrypt is a free disk encryption software brought to you by IDRIX (https://www.idrix.fr) and that is based on TrueCrypt.</description>
     <projectUrl>https://veracrypt.codeplex.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/kendaleiv/chocolatey-veracrypt/master/veraCrypt.png</iconUrl>
     <tags>veracrypt admin encrypt</tags>

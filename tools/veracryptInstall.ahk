@@ -5,7 +5,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 
-WinWait, VeraCrypt Setup 1.18a, , 60
+WinWait, VeraCrypt Setup 1.19, , 60
 WinActivate
 BlockInput On
 Send !a

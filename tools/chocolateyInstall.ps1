@@ -2,7 +2,7 @@
 
 $packageName= 'veracrypt'
 $toolsDir   = $(Split-Path -parent $MyInvocation.MyCommand.Definition)
-$url        = 'https://veracrypt.codeplex.com/downloads/get/1614078'
+$url        = 'https://launchpad.net/veracrypt/trunk/1.19/+download/VeraCrypt%20Setup%201.19.exe'
 
 $packageArgs = @{
   packageName   = $packageName

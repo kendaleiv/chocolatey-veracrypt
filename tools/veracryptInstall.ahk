@@ -1,26 +1,36 @@
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 #NoTrayIcon
-; #Warn  ; Enable warnings to assist with detecting common errors.
+;#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 SetTitleMatchMode, 1
+SetControlDelay -1
 
 winTitleInstall = VeraCrypt Setup
+upgradeVeraCrypt = 0
 
 WinWait, %winTitleInstall%, , 300
 WinActivate
-BlockInput, Off
+; BlockInput, Off
 
 ; License terms
 ControlClick, I &accept the license terms, %winTitleInstall%,,,, NA
 ControlClick, &Next >, %winTitleInstall%,,,, NA
 
 ; Type of install
-ControlClick, &Next >, %winTitleInstall%,,,, NA
+WinWait, %winTitleInstall%, Wizard Mode, , 2
+if !(ErrorLevel) {
+	ControlClick, &Next >, %winTitleInstall%,,,, NA
+}
+
+Sleep, 200
 
 ; Upgrade or Install
 IfWinExist, %winTitleInstall%, upgraded in the location,,
+{
 	ControlClick, Upgrade, %winTitleInstall%,,,, NA
+	upgradeVeraCrypt = 1
+}
 else
 	ControlClick, &Install, %winTitleInstall%,,,, NA
 
@@ -29,13 +39,23 @@ WinWait, %winTitleInstall% ahk_class #32770
 ControlClick, OK, %winTitleInstall%,,,, NA
 
 ; Donation
-IfWinExist, %winTitleInstall%, VeraCrypt has been successfully
-	ControlClick, &Finish, %winTitleInstall%
-
-; Help / manual suggestion	
-IfWinExist, %winTitleInstall%, If you have never used VeraCrypt before
-	ControlClick, &No, %winTitleInstall%
+WinWait, %winTitleInstall%, donation, , 10
+if !(ErrorLevel) {
+	Sleep, 200
+	ControlClick, &Finish, %winTitleInstall%,,,, NA
+}
 
 ; If doing an upgrade you are prompted to restart
-IfWinExist, %winTitleInstall%, computer must be restarted
-	ControlClick, &No, %winTitleInstall%
+if (upgradeVeraCrypt) {
+	WinWait, %winTitleInstall%, computer must be restarted, , 2
+	if !(ErrorLevel) {
+		ControlClick, &No, %winTitleInstall%,,,, NA
+	}
+}
+else {
+	; Help / manual suggestion	
+	WinWait, %winTitleInstall%, If you have never used VeraCrypt before, , 2
+	if !(ErrorLevel) {
+		ControlClick, &No, %winTitleInstall%,,,, NA
+	}
+}

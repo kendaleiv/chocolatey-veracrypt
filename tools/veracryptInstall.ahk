@@ -13,7 +13,11 @@ WinWait, %winTitleInstall%, , 300
 WinActivate
 ; BlockInput, Off
 
+; Language selection
+ControlClick, OK, %winTitleInstall%,,,, NA
+
 ; License terms
+WinWait, %winTitleInstall%, license
 ControlClick, I &accept the license terms, %winTitleInstall%,,,, NA
 ControlClick, &Next >, %winTitleInstall%,,,, NA
 

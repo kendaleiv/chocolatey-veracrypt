@@ -42,9 +42,16 @@ winInstallTypeText["de"] := "Installationsassisten"
 winInstallTypeText["fr"] := "Mode assistant"
 
 winInstallOptionsText := []
-winInstallOptionsText["en"] := "upgraded in the location"
+winInstallOptionsText["en"] := "Please select or type the location"
 winInstallOptionsText["de"] := "Geben Sie das Zielverzeichnis"
 winInstallOptionsText["fr"] := "ou saisir l'emplacement"
+
+; Upgrade window only apears on software update,
+; and there is no language selection. thats why all english
+winUpgradeOptionsText := []
+winUpgradeOptionsText["en"] := "upgraded in the location"
+winUpgradeOptionsText["de"] := "upgraded in the location"
+winUpgradeOptionsText["fr"] := "upgraded in the location"
 
 winDonationText := []
 winDonationText["en"] := "donation"
@@ -120,7 +127,11 @@ Sleep, 200
 
 
 ;MsgBox % "Upgrade/Install"
-WinWait, % winInstallTitle[language], % winInstallOptionsText[language],,
+if (upgradeVeraCrypt) {
+	WinWait, % winInstallTitle[language], % winUpgradeOptionsText[language],,
+} else {
+	WinWait, % winInstallTitle[language], % winInstallOptionsText[language],,
+}
 ControlClick, Button3, % winInstallTitle[language],,,, NA
 
 

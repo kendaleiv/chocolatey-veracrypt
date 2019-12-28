@@ -2,7 +2,7 @@
 
 $packageName= 'veracrypt'
 $toolsDir   = $(Split-Path -parent $MyInvocation.MyCommand.Definition)
-$url        = 'https://launchpad.net/veracrypt/trunk/1.24-hotfix1/+download/VeraCrypt%20Setup%201.24-Hotfix1.exe'
+$url        = 'https://launchpad.net/veracrypt/trunk/1.24-update2/+download/VeraCrypt%20Setup%201.24-Update2.exe'
 
 $packageArgs = @{
   packageName   = $packageName
@@ -12,7 +12,7 @@ $packageArgs = @{
   silentArgs = "" # Silent installation discussion: https://veracrypt.codeplex.com/discussions/579539
 
   softwareName  = 'VeraCrypt*'
-  checksum      = '09F530345FD3FDE3D69E54393FB63D54BD1B6ED5405183CBBE87300F3D7A692B'
+  checksum      = '8633E3EA7382F2CB2370B0BECCBB815D96D4C232CB61E08A1DB82544B21BF51C'
   checksumType  = 'sha256'
 }
 

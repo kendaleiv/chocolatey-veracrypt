@@ -20,7 +20,7 @@ $packageArgs = @{
 $ahkExe = 'AutoHotKey'
 $ahkFile = Join-Path $toolsDir "veracryptInstall.ahk"
 $ahkProc = Start-Process -FilePath $ahkExe `
-                         -ArgumentList $ahkFile `
+                         -ArgumentList "`"$ahkFile`"" `
                          -PassThru
 
 $ahkId = $ahkProc.Id

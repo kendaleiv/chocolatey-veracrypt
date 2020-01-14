@@ -18,7 +18,7 @@ $ahkRun = "$Env:Temp\$(Get-Random).ahk"
 
 Copy-Item $ahkFile "$ahkRun" -Force
 $ahkProc = Start-Process -FilePath 'AutoHotKey' `
-					   -ArgumentList $ahkRun `
+					   -ArgumentList "`"$ahkRun`"" `
 					   -PassThru
 Write-Debug "$ahkRun start time:`t$($ahkProc.StartTime.ToShortTimeString())"
 Write-Debug "$ahkRun process ID:`t$($ahkProc.Id)"

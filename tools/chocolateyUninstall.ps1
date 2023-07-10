@@ -1,28 +1,28 @@
-$packageName = "veracrypt"
-$fileType = "exe"
-$args = "/u"
-
-$is64bit = Get-ProcessorBits 64
-
-if ($is64bit) {
-  $setupExePath = (Get-ItemProperty HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\VeraCrypt).UninstallString.split('"')[1]
-}
-else {
-  $setupExePath = (Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\VeraCrypt).UninstallString.split('"')[1]
+$ErrorActionPreference = 'Stop'
+$packageArgs = @{
+  packageName   = $env:ChocolateyPackageName
+  softwareName  = 'VeraCrypt*'
+  fileType      = 'MSI'
+  silentArgs    = "/qn /norestart"
+  validExitCodes= @(0)
 }
 
-#Thanks to dtgm and the GitHub package for ideas.
-$scriptPath = $(Split-Path -parent $MyInvocation.MyCommand.Definition)
-$ahkFile = Join-Path $scriptPath "veracryptUninstall.ahk"
-$ahkRun = "$Env:Temp\$(Get-Random).ahk"
+[array]$key = Get-UninstallRegistryKey -SoftwareName $packageArgs['softwareName']
 
-Copy-Item $ahkFile "$ahkRun" -Force
-$ahkProc = Start-Process -FilePath 'AutoHotKey' `
-					   -ArgumentList "`"$ahkRun`"" `
-					   -PassThru
-Write-Debug "$ahkRun start time:`t$($ahkProc.StartTime.ToShortTimeString())"
-Write-Debug "$ahkRun process ID:`t$($ahkProc.Id)"
-
-Uninstall-ChocolateyPackage $packageName $fileType $args $setupExePath
-
-Remove-Item "$ahkRun" -Force
+if ($key.Count -eq 1) {
+  $key | % {
+    $packageArgs['file'] = "$($_.UninstallString)"
+    if ($packageArgs['fileType'] -eq 'MSI') {
+      $packageArgs['silentArgs'] = "$($_.PSChildName) $($packageArgs['silentArgs'])"
+      $packageArgs['file'] = ''
+    }
+    Uninstall-ChocolateyPackage @packageArgs
+  }
+} elseif ($key.Count -eq 0) {
+  Write-Warning "$packageName has already been uninstalled by other means."
+} elseif ($key.Count -gt 1) {
+  Write-Warning "$($key.Count) matches found!"
+  Write-Warning "To prevent accidental data loss, no programs will be uninstalled."
+  Write-Warning "Please alert package maintainer the following keys were matched:"
+  $key | % {Write-Warning "- $($_.DisplayName)"}
+}

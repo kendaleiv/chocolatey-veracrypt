@@ -11,9 +11,6 @@
     <description>VeraCrypt is a free open source disk encryption software for Windows, Mac OSX and Linux. Brought to you by IDRIX (https://www.idrix.fr) and based on TrueCrypt 7.1a.</description>
     <projectUrl>https://www.veracrypt.fr</projectUrl>
     <iconUrl>https://cdn.rawgit.com/kendaleiv/chocolatey-veracrypt/master/VeraCrypt128x128.png</iconUrl>
-    <dependencies>
-        <dependency id="autohotkey.portable" />
-    </dependencies>
     <tags>veracrypt admin encrypt</tags>
     <copyright>IDRIX</copyright>
     <licenseUrl>https://github.com/veracrypt/VeraCrypt/blob/master/License.txt</licenseUrl>

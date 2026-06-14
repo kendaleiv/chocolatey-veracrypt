@@ -10,6 +10,9 @@ on:
       - '.github/workflows/publish.yml'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   publish:
     runs-on: windows-latest
@@ -23,4 +26,4 @@ jobs:
       - name: Push
         env:
           CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
-        run: choco push --source "https://push.chocolatey.org/" --api-key "$env:CHOCO_API_KEY"
+        run: choco push *.nupkg --source "https://push.chocolatey.org/" --api-key "$env:CHOCO_API_KEY"
